@@ -6,5 +6,6 @@
 //
 
 struct K {
-    static let tableCellId = "Cell"
+    static let tableCellId = "TableCell"
+    static let collectionViewCellId = "CollectionViewCell"
 }
