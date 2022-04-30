@@ -8,4 +8,8 @@
 struct K {
     static let tableCellId = "TableCell"
     static let collectionViewCellId = "CollectionViewCell"
+    
+    struct Stubs {
+        static let mainPosterImageName = "heroImage"
+    }
 }
