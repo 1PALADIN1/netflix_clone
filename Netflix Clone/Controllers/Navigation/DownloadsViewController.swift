@@ -20,7 +20,7 @@ class DownloadsViewController: UIViewController {
 
 extension DownloadsViewController: TabBarItem {
     var icon: UIImage? {
-        return UIImage(systemName: "arrow.down.to.line")
+        return UIImage(systemName: K.SystemIcons.TabBar.downloads)
     }
     
     var titleString: String {
@@ -30,6 +30,4 @@ extension DownloadsViewController: TabBarItem {
     var rootViewContoller: UIViewController {
         return self
     }
-    
-    
 }

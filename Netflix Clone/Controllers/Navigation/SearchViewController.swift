@@ -20,7 +20,7 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: TabBarItem {
     var icon: UIImage? {
-        return UIImage(systemName: "magnifyingglass")
+        return UIImage(systemName: K.SystemIcons.TabBar.search)
     }
     
     var titleString: String {

@@ -24,4 +24,18 @@ extension K {
     struct Icons {
         static let netflixLogo = "netflixLogo"
     }
+    
+    struct SystemIcons {
+        struct TabBar {
+            static let home = "house"
+            static let comingSoon = "play.circle"
+            static let search = "magnifyingglass"
+            static let downloads = "arrow.down.to.line"
+        }
+        
+        struct NavBar {
+            static let userProfile = "person"
+            static let play = "play.rectangle"
+        }
+    }
 }

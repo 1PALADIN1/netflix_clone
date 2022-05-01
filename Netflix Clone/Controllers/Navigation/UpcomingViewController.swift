@@ -20,7 +20,7 @@ class UpcomingViewController: UIViewController {
 
 extension UpcomingViewController: TabBarItem {
     var icon: UIImage? {
-        return UIImage(systemName: "play.circle")
+        return UIImage(systemName: K.SystemIcons.TabBar.comingSoon)
     }
     
     var titleString: String {
