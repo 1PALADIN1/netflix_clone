@@ -38,7 +38,6 @@ struct AppConfig {
             let decodedData = try decoder.decode(AppConfigData.self, from: data)
             return decodedData
         } catch {
-            print(error)
             fatalError(error.localizedDescription)
         }
     }

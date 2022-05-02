@@ -8,7 +8,11 @@
 import Foundation
 
 protocol MovieApiManagerDelegate {
-    func didFetchTrendingMovies(movies: [MovieData])
+    func didFetchTrendingMovies(titles: [TitleData])
+    func didFetchTrendingTv(titles: [TitleData])
+    func didFetchUpcomingMovies(titles: [TitleData])
+    func didFetchPopularMovies(titles: [TitleData])
+    func didFetchTopRatedMovies(titles: [TitleData])
     
     func didFailWithError(error: Error)
 }
@@ -26,7 +30,41 @@ struct MovieApiManager {
     }
     
     func fetchTrendingMovies() {
-        let urlString = "\(baseURL)/3/trending/all/day?api_key=\(apiKey)"
+        let urlString = "\(baseURL)/3/trending/movie/day?api_key=\(apiKey)"
+        fetchMovies(urlString: urlString) { results in
+            delegate?.didFetchTrendingMovies(titles: results)
+        }
+    }
+    
+    func fetchTrendingTv() {
+        let urlString = "\(baseURL)/3/trending/tv/day?api_key=\(apiKey)"
+        fetchMovies(urlString: urlString) { results in
+            delegate?.didFetchTrendingTv(titles: results)
+        }
+    }
+    
+    func fetchUpcomingMovies() {
+        let urlString = "\(baseURL)/3/movie/upcoming?api_key=\(apiKey)&language=en-US&page=1"
+        fetchMovies(urlString: urlString) { results in
+            delegate?.didFetchUpcomingMovies(titles: results)
+        }
+    }
+    
+    func fetchPopularMovies() {
+        let urlString = "\(baseURL)/3/movie/popular?api_key=\(apiKey)&language=en-US&page=1"
+        fetchMovies(urlString: urlString) { results in
+            delegate?.didFetchPopularMovies(titles: results)
+        }
+    }
+    
+    func fetchTopRatedMovies() {
+        let urlString = "\(baseURL)/3/movie/top_rated?api_key=\(apiKey)&language=en-US&page=1"
+        fetchMovies(urlString: urlString) { results in
+            delegate?.didFetchTopRatedMovies(titles: results)
+        }
+    }
+    
+    private func fetchMovies(urlString: String, successHandler: @escaping ([TitleData]) -> Void) {
         guard let url = URL(string: urlString) else {
             delegate?.didFailWithError(error: ApiError.errorUrlString(urlString))
             return
@@ -46,13 +84,41 @@ struct MovieApiManager {
             
             do {
                 let decoder = JSONDecoder()
-                let response = try decoder.decode(TrendingMoviesResponse.self, from: data)
-                delegate?.didFetchTrendingMovies(movies: response.results)
+                let response = try decoder.decode(MovieApiResponse.self, from: data)
+                successHandler(response.results)
             } catch {
                 delegate?.didFailWithError(error: error)
             }
         }
         
         task.resume()
+    }
+}
+
+//MARK: - Default MovieApiManagerDelegate implementation
+
+extension MovieApiManagerDelegate {
+    func didFetchTrendingMovies(titles: [TitleData]) {
+        print(titles)
+    }
+    
+    func didFetchTrendingTv(titles: [TitleData]) {
+        print(titles)
+    }
+    
+    func didFetchUpcomingMovies(titles: [TitleData]) {
+        print(titles)
+    }
+    
+    func didFetchPopularMovies(titles: [TitleData]) {
+        print(titles)
+    }
+    
+    func didFetchTopRatedMovies(titles: [TitleData]) {
+        print(titles)
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
     }
 }

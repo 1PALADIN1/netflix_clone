@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
         configureNavbar()
         
         apiManager.delegate = self
-        refeshMovieData()
+        fetchData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -63,8 +63,12 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .label
     }
     
-    private func refeshMovieData() {
+    private func fetchData() {
         apiManager.fetchTrendingMovies()
+        apiManager.fetchTrendingTv()
+        apiManager.fetchUpcomingMovies()
+        apiManager.fetchPopularMovies()
+        apiManager.fetchTopRatedMovies()
     }
 }
 
@@ -142,12 +146,5 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 //MARK: - MovieApiManagerDelegate
 
 extension HomeViewController: MovieApiManagerDelegate {
-    func didFetchTrendingMovies(movies: [MovieData]) {
-        print(movies)
-    }
-    
-    func didFailWithError(error: Error) {
-        print(error)
-    }
+    //TODO: update UI
 }
-

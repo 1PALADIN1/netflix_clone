@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49507E26281E967600FDFE51 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49507E25281E967600FDFE51 /* MovieData.swift */; };
+		49507E26281E967600FDFE51 /* TitleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49507E25281E967600FDFE51 /* TitleData.swift */; };
 		49507E28281E971D00FDFE51 /* MovieApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49507E27281E971D00FDFE51 /* MovieApiManager.swift */; };
 		49552519281B049500703DEF /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49552518281B049500703DEF /* K.swift */; };
 		4955251C281B07FB00703DEF /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955251B281B07FB00703DEF /* CollectionViewTableViewCell.swift */; };
@@ -29,7 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		49507E25281E967600FDFE51 /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
+		49507E25281E967600FDFE51 /* TitleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleData.swift; sourceTree = "<group>"; };
 		49507E27281E971D00FDFE51 /* MovieApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieApiManager.swift; sourceTree = "<group>"; };
 		49552518281B049500703DEF /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		4955251B281B07FB00703DEF /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 			children = (
 				49CD2CD6281FE795000D9794 /* Config */,
 				49507E24281E933200FDFE51 /* Managers */,
-				49507E25281E967600FDFE51 /* MovieData.swift */,
+				49507E25281E967600FDFE51 /* TitleData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -227,7 +227,7 @@
 			files = (
 				4955251C281B07FB00703DEF /* CollectionViewTableViewCell.swift in Sources */,
 				49552519281B049500703DEF /* K.swift in Sources */,
-				49507E26281E967600FDFE51 /* MovieData.swift in Sources */,
+				49507E26281E967600FDFE51 /* TitleData.swift in Sources */,
 				4990AD552819D61300A8A1FD /* SearchViewController.swift in Sources */,
 				4990AD402819D24300A8A1FD /* MainTabBarViewController.swift in Sources */,
 				4990AD572819D64E00A8A1FD /* DownloadsViewController.swift in Sources */,

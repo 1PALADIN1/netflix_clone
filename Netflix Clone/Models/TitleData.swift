@@ -5,11 +5,11 @@
 //  Created by Ruslan Malinovsky on 01.05.2022.
 //
 
-struct TrendingMoviesResponse: Codable {
-    let results: [MovieData]
+struct MovieApiResponse: Decodable {
+    let results: [TitleData]
 }
 
-struct MovieData: Codable {
+struct TitleData: Decodable {
     let id: Int
     let media_type: String?
     let original_name: String?
