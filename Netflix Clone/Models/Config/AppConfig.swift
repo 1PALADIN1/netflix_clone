@@ -10,21 +10,22 @@ import Foundation
 struct AppConfig {
     static let shared = AppConfig()
     
-    private var baseUrl: String?
-    private var apiKey: String?
+    private var appData: AppConfigData?
     
-    var url: String {
-        return baseUrl ?? ""
+    var baseUrl: String {
+        return appData?.baseUrl ?? ""
     }
     
-    var key: String {
-        return apiKey ?? ""
+    var apiKey: String {
+        return appData?.apiKey ?? ""
+    }
+    
+    var imageBaseUrl: String {
+        return appData?.imageBaseUrl ?? ""
     }
     
     private init() {
-        guard let configData = loadConfig() else { return }
-        baseUrl = configData.baseUrl
-        apiKey = configData.apiKey
+        appData = loadConfig()
     }
     
     private func loadConfig() -> AppConfigData? {

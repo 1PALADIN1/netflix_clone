@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		491EE1AB282034D000CF04C1 /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491EE1AA282034D000CF04C1 /* TitleCollectionViewCell.swift */; };
+		491EE1AE2820361D00CF04C1 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 491EE1AD2820361D00CF04C1 /* SDWebImage */; };
+		491EE1B02820361D00CF04C1 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 491EE1AF2820361D00CF04C1 /* SDWebImageMapKit */; };
+		491EE1B5282046D700CF04C1 /* HomeSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491EE1B4282046D700CF04C1 /* HomeSectionType.swift */; };
 		49507E26281E967600FDFE51 /* TitleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49507E25281E967600FDFE51 /* TitleData.swift */; };
 		49507E28281E971D00FDFE51 /* MovieApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49507E27281E971D00FDFE51 /* MovieApiManager.swift */; };
 		49552519281B049500703DEF /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49552518281B049500703DEF /* K.swift */; };
 		4955251C281B07FB00703DEF /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955251B281B07FB00703DEF /* CollectionViewTableViewCell.swift */; };
 		496DD3E4281D23D600424990 /* HeroHeaderUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496DD3E3281D23D600424990 /* HeroHeaderUIView.swift */; };
+		497230E528204D1D00857B2A /* HomeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497230E428204D1D00857B2A /* HomeSection.swift */; };
 		4990AD3C2819D24300A8A1FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4990AD3B2819D24300A8A1FD /* AppDelegate.swift */; };
 		4990AD3E2819D24300A8A1FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4990AD3D2819D24300A8A1FD /* SceneDelegate.swift */; };
 		4990AD402819D24300A8A1FD /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4990AD3F2819D24300A8A1FD /* MainTabBarViewController.swift */; };
@@ -29,11 +34,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		491EE1AA282034D000CF04C1 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		491EE1B4282046D700CF04C1 /* HomeSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionType.swift; sourceTree = "<group>"; };
 		49507E25281E967600FDFE51 /* TitleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleData.swift; sourceTree = "<group>"; };
 		49507E27281E971D00FDFE51 /* MovieApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieApiManager.swift; sourceTree = "<group>"; };
 		49552518281B049500703DEF /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		4955251B281B07FB00703DEF /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
 		496DD3E3281D23D600424990 /* HeroHeaderUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroHeaderUIView.swift; sourceTree = "<group>"; };
+		497230E428204D1D00857B2A /* HomeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSection.swift; sourceTree = "<group>"; };
 		4990AD382819D24300A8A1FD /* Netflix Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netflix Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4990AD3B2819D24300A8A1FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4990AD3D2819D24300A8A1FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,12 +65,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491EE1B02820361D00CF04C1 /* SDWebImageMapKit in Frameworks */,
+				491EE1AE2820361D00CF04C1 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		491EE1B3282046BF00CF04C1 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4990AD502819D59100A8A1FD /* HomeViewController.swift */,
+				491EE1B4282046D700CF04C1 /* HomeSectionType.swift */,
+				497230E428204D1D00857B2A /* HomeSection.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		49507E23281E932A00FDFE51 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +107,7 @@
 			children = (
 				4955251B281B07FB00703DEF /* CollectionViewTableViewCell.swift */,
 				496DD3E3281D23D600424990 /* HeroHeaderUIView.swift */,
+				491EE1AA282034D000CF04C1 /* TitleCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -136,8 +157,8 @@
 		4990AD582819D66100A8A1FD /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				491EE1B3282046BF00CF04C1 /* Home */,
 				4990AD592819DDA100A8A1FD /* TabBarItem.swift */,
-				4990AD502819D59100A8A1FD /* HomeViewController.swift */,
 				4990AD522819D5CA00A8A1FD /* UpcomingViewController.swift */,
 				4990AD542819D61300A8A1FD /* SearchViewController.swift */,
 				4990AD562819D64E00A8A1FD /* DownloadsViewController.swift */,
@@ -170,6 +191,10 @@
 			dependencies = (
 			);
 			name = "Netflix Clone";
+			packageProductDependencies = (
+				491EE1AD2820361D00CF04C1 /* SDWebImage */,
+				491EE1AF2820361D00CF04C1 /* SDWebImageMapKit */,
+			);
 			productName = "Netflix Clone";
 			productReference = 4990AD382819D24300A8A1FD /* Netflix Clone.app */;
 			productType = "com.apple.product-type.application";
@@ -198,6 +223,9 @@
 				Base,
 			);
 			mainGroup = 4990AD2F2819D24300A8A1FD;
+			packageReferences = (
+				491EE1AC2820361D00CF04C1 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 4990AD392819D24300A8A1FD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -225,12 +253,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491EE1B5282046D700CF04C1 /* HomeSectionType.swift in Sources */,
 				4955251C281B07FB00703DEF /* CollectionViewTableViewCell.swift in Sources */,
 				49552519281B049500703DEF /* K.swift in Sources */,
 				49507E26281E967600FDFE51 /* TitleData.swift in Sources */,
 				4990AD552819D61300A8A1FD /* SearchViewController.swift in Sources */,
+				491EE1AB282034D000CF04C1 /* TitleCollectionViewCell.swift in Sources */,
 				4990AD402819D24300A8A1FD /* MainTabBarViewController.swift in Sources */,
 				4990AD572819D64E00A8A1FD /* DownloadsViewController.swift in Sources */,
+				497230E528204D1D00857B2A /* HomeSection.swift in Sources */,
 				49CD2CD5281FE554000D9794 /* AppConfig.swift in Sources */,
 				4990AD3C2819D24300A8A1FD /* AppDelegate.swift in Sources */,
 				49CD2CD1281FE296000D9794 /* ApiError.swift in Sources */,
@@ -450,6 +481,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		491EE1AC2820361D00CF04C1 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		491EE1AD2820361D00CF04C1 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 491EE1AC2820361D00CF04C1 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		491EE1AF2820361D00CF04C1 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 491EE1AC2820361D00CF04C1 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4990AD302819D24300A8A1FD /* Project object */;
 }

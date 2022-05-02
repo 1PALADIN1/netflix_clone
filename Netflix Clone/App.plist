@@ -4,6 +4,8 @@
 <dict>
 	<key>baseUrl</key>
 	<string>https://api.themoviedb.org</string>
+	<key>imageBaseUrl</key>
+	<string>https://image.tmdb.org/t/p/w500</string>
 	<key>apiKey</key>
 	<string></string>
 </dict>

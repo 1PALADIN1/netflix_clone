@@ -22,11 +22,11 @@ struct MovieApiManager {
     var delegate: MovieApiManagerDelegate?
     
     private var baseURL: String {
-        return AppConfig.shared.url
+        return AppConfig.shared.baseUrl
     }
     
     private var apiKey: String {
-        return AppConfig.shared.key
+        return AppConfig.shared.apiKey
     }
     
     func fetchTrendingMovies() {
@@ -99,23 +99,18 @@ struct MovieApiManager {
 
 extension MovieApiManagerDelegate {
     func didFetchTrendingMovies(titles: [TitleData]) {
-        print(titles)
     }
     
     func didFetchTrendingTv(titles: [TitleData]) {
-        print(titles)
     }
     
     func didFetchUpcomingMovies(titles: [TitleData]) {
-        print(titles)
     }
     
     func didFetchPopularMovies(titles: [TitleData]) {
-        print(titles)
     }
     
     func didFetchTopRatedMovies(titles: [TitleData]) {
-        print(titles)
     }
     
     func didFailWithError(error: Error) {

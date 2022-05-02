@@ -9,13 +9,15 @@ import UIKit
 
 class CollectionViewTableViewCell: UITableViewCell {
     
+    private var titles: [TitleData] = []
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 140, height: 200)
         layout.scrollDirection = .horizontal
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: K.collectionViewCellId)
+        collectionView.register(TitleCollectionViewCell.self, forCellWithReuseIdentifier: K.titleCollectionViewCellId)
         
         return collectionView
     }()
@@ -39,23 +41,32 @@ class CollectionViewTableViewCell: UITableViewCell {
         
         collectionView.frame = contentView.bounds
     }
+    
+    func configure(with titles: [TitleData]) {
+        self.titles = titles
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
 }
 
-//MARK: - UICollectionViewDelegate
+//MARK: - Collection View Methods
 
-extension CollectionViewTableViewCell: UICollectionViewDelegate {
-}
-
-//MARK: - UICollectionViewDataSource
-
-extension CollectionViewTableViewCell: UICollectionViewDataSource {
+extension CollectionViewTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return titles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.collectionViewCellId, for: indexPath)
-        cell.backgroundColor = .green
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.titleCollectionViewCellId, for: indexPath) as? TitleCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        guard let posterPath = titles[indexPath.row].poster_path else {
+            return UICollectionViewCell()
+        }
+        
+        cell.configure(with: posterPath)
         return cell
     }
 }

@@ -5,9 +5,11 @@
 //  Created by Ruslan Malinovsky on 28.04.2022.
 //
 
+//MARK: - Common
+
 struct K {
     static let tableCellId = "TableCell"
-    static let collectionViewCellId = "CollectionViewCell"
+    static let titleCollectionViewCellId = "TitleViewCell"
 }
 
 //MARK: - Stubs

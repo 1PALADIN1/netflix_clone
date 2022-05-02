@@ -9,14 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    private let sectionTitles: [String] = [
-        "Trending Movies",
-        "Trending TV",
-        "Popular",
-        "Upcoming Movies",
-        "Top Rated"
-    ]
-    
+    private var sectionTitles: [HomeSection] = []
     private var apiManager = MovieApiManager()
 
     private let homeFeedTable: UITableView = {
@@ -41,8 +34,25 @@ class HomeViewController: UIViewController {
         homeFeedTable.tableHeaderView = headerView
         configureNavbar()
         
+        sectionTitles = [
+            HomeSection(name: "Trending Movies", sectionType: .TrendingMovies) { () in
+                self.apiManager.fetchTrendingMovies()
+            },
+            HomeSection(name: "Trending TV", sectionType: .TrendingTV) { () in
+                self.apiManager.fetchTrendingTv()
+            },
+            HomeSection(name: "Popular", sectionType: .Popular) { () in
+                self.apiManager.fetchPopularMovies()
+            },
+            HomeSection(name: "Upcoming Movies", sectionType: .UpcomingMovies) { () in
+                self.apiManager.fetchUpcomingMovies()
+            },
+            HomeSection(name: "Top Rated", sectionType: .TopRated) { () in
+                self.apiManager.fetchTopRatedMovies()
+            }
+        ]
+        
         apiManager.delegate = self
-        fetchData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,14 +71,6 @@ class HomeViewController: UIViewController {
         ]
         
         navigationController?.navigationBar.tintColor = .label
-    }
-    
-    private func fetchData() {
-        apiManager.fetchTrendingMovies()
-        apiManager.fetchTrendingTv()
-        apiManager.fetchUpcomingMovies()
-        apiManager.fetchPopularMovies()
-        apiManager.fetchTopRatedMovies()
     }
 }
 
@@ -101,7 +103,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionTitles[section]
+        return sectionTitles[section].name
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -122,6 +124,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
+        sectionTitles[indexPath.section].fetchData()
         return cell
     }
     
@@ -146,5 +149,34 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 //MARK: - MovieApiManagerDelegate
 
 extension HomeViewController: MovieApiManagerDelegate {
-    //TODO: update UI
+    func didFetchTrendingMovies(titles: [TitleData]) {
+        refreshSection(HomeSectionType.TrendingMovies, with: titles)
+    }
+    
+    func didFetchTrendingTv(titles: [TitleData]) {
+        refreshSection(HomeSectionType.TrendingTV, with: titles)
+    }
+    
+    func didFetchPopularMovies(titles: [TitleData]) {
+        refreshSection(HomeSectionType.Popular, with: titles)
+    }
+    
+    func didFetchUpcomingMovies(titles: [TitleData]) {
+        refreshSection(HomeSectionType.UpcomingMovies, with: titles)
+    }
+    
+    func didFetchTopRatedMovies(titles: [TitleData]) {
+        refreshSection(HomeSectionType.TopRated, with: titles)
+    }
+    
+    private func refreshSection(_ section: HomeSectionType, with titles: [TitleData]) {
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: 0, section: section.rawValue)
+            guard let cell = self.homeFeedTable.cellForRow(at: indexPath) as? CollectionViewTableViewCell else {
+                return
+            }
+            
+            cell.configure(with: titles)
+        }
+    }
 }

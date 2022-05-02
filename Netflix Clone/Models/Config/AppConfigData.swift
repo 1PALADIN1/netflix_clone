@@ -7,5 +7,6 @@
 
 struct AppConfigData: Decodable {
     let baseUrl: String
+    let imageBaseUrl: String
     let apiKey: String
 }
