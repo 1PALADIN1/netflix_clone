@@ -11,11 +11,13 @@ class HomeViewController: UIViewController {
     
     private let sectionTitles: [String] = [
         "Trending Movies",
-        "Popular",
         "Trending TV",
+        "Popular",
         "Upcoming Movies",
         "Top Rated"
     ]
+    
+    private var apiManager = MovieApiManager()
 
     private let homeFeedTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -38,6 +40,9 @@ class HomeViewController: UIViewController {
                                                         height: 450))
         homeFeedTable.tableHeaderView = headerView
         configureNavbar()
+        
+        apiManager.delegate = self
+        refeshMovieData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -56,6 +61,10 @@ class HomeViewController: UIViewController {
         ]
         
         navigationController?.navigationBar.tintColor = .label
+    }
+    
+    private func refeshMovieData() {
+        apiManager.fetchTrendingMovies()
     }
 }
 
@@ -129,3 +138,16 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
                                                               y: min(0, -offset))
     }
 }
+
+//MARK: - MovieApiManagerDelegate
+
+extension HomeViewController: MovieApiManagerDelegate {
+    func didFetchTrendingMovies(movies: [MovieData]) {
+        print(movies)
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+}
+
