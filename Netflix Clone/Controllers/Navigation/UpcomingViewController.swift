@@ -34,7 +34,7 @@ class UpcomingViewController: UIViewController {
         upcomingTable.delegate = self
         apiManager.delegate = self
         
-        fetchUpcoming()
+        fetchUpcomingMovies()
     }
     
     override func viewDidLayoutSubviews() {
@@ -42,7 +42,7 @@ class UpcomingViewController: UIViewController {
         upcomingTable.frame = view.bounds
     }
     
-    private func fetchUpcoming() {
+    private func fetchUpcomingMovies() {
         apiManager.fetchUpcomingMovies()
     }
 }

@@ -78,13 +78,7 @@ class TitleTableViewCell: UITableViewCell {
     func configure(with title: TitleData) {
         titleLabel.text = title.titleName
         
-        guard let pathUrl = title.poster_path else { return }
-        let urlString = "\(imageBaseUrl)\(pathUrl)"
-        guard let url = URL(string: urlString) else {
-            print("Error creating url from string \(urlString)")
-            return
-        }
-        
+        guard let url = title.getPosterUrl(with: imageBaseUrl) else { return }
         titlePosterUIImageView.sd_setImage(with: url, completed: nil)
     }
 }

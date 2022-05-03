@@ -13,6 +13,7 @@ protocol MovieApiManagerDelegate {
     func didFetchUpcomingMovies(titles: [TitleData])
     func didFetchPopularMovies(titles: [TitleData])
     func didFetchTopRatedMovies(titles: [TitleData])
+    func didFetchDiscoverMovies(titles: [TitleData])
     
     func didFailWithError(error: Error)
 }
@@ -64,6 +65,13 @@ struct MovieApiManager {
         }
     }
     
+    func fetchDiscoverMovies() {
+        let urlString = "\(baseURL)/3/discover/movie?api_key=\(apiKey)&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate"
+        fetchMovies(urlString: urlString) { results in
+            delegate?.didFetchDiscoverMovies(titles: results)
+        }
+    }
+    
     private func fetchMovies(urlString: String, successHandler: @escaping ([TitleData]) -> Void) {
         guard let url = URL(string: urlString) else {
             delegate?.didFailWithError(error: ApiError.errorUrlString(urlString))
@@ -111,6 +119,9 @@ extension MovieApiManagerDelegate {
     }
     
     func didFetchTopRatedMovies(titles: [TitleData]) {
+    }
+    
+    func didFetchDiscoverMovies(titles: [TitleData]){
     }
     
     func didFailWithError(error: Error) {

@@ -5,6 +5,8 @@
 //  Created by Ruslan Malinovsky on 01.05.2022.
 //
 
+import Foundation
+
 struct MovieApiResponse: Decodable {
     let results: [TitleData]
 }
@@ -24,5 +26,20 @@ struct TitleData: Decodable {
     let vote_count: Int
     let release_date: String?
     let vote_average: Double
+    
+    func getPosterUrl(with imageBaseUrl: String) -> URL? {
+        guard let pathUrl = poster_path else {
+            print("Poster for title \(id) is not specified!")
+            return nil
+        }
+        
+        let urlString = "\(imageBaseUrl)\(pathUrl)"
+        guard let url = URL(string: urlString) else {
+            print("Error creating url from string \(urlString)!")
+            return nil
+        }
+        
+        return url
+    }
 }
 

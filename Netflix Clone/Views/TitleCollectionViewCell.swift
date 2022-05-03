@@ -34,13 +34,8 @@ class TitleCollectionViewCell: UICollectionViewCell {
         posterImageView.frame = contentView.bounds
     }
     
-    func configure(with posterPath: String) {
-        let urlString = "\(imageBaseUrl)\(posterPath)"
-        guard let url = URL(string: urlString) else {
-            print("Error creating url from string \(urlString)")
-            return
-        }
-        
+    func configure(with title: TitleData) {
+        guard let url = title.getPosterUrl(with: imageBaseUrl) else { return }
         posterImageView.sd_setImage(with: url, completed: nil)
     }
 }

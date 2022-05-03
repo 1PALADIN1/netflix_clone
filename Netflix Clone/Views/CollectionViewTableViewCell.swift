@@ -62,11 +62,7 @@ extension CollectionViewTableViewCell: UICollectionViewDataSource, UICollectionV
             return UICollectionViewCell()
         }
         
-        guard let posterPath = titles[indexPath.row].poster_path else {
-            return UICollectionViewCell()
-        }
-        
-        cell.configure(with: posterPath)
+        cell.configure(with: titles[indexPath.row])
         return cell
     }
 }
