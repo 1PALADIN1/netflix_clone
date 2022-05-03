@@ -17,22 +17,32 @@ class SearchViewController: UIViewController {
         table.register(TitleTableViewCell.self, forCellReuseIdentifier: K.titleTableCellId)
         return table
     }()
+    
+    private let searchController: UISearchController = {
+        let controller = UISearchController(searchResultsController: SearchResultsViewController())
+        controller.searchBar.placeholder = "Search for a Movie or a TV show"
+        controller.searchBar.searchBarStyle = .minimal
+        return controller
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .systemBackground
-        title = "Search"
+        navigationItem.title = "Search"
+        navigationItem.searchController = searchController
         
         if let navigationController = navigationController {
             navigationController.navigationBar.prefersLargeTitles = true
             navigationController.navigationItem.largeTitleDisplayMode = .always
+            navigationController.navigationBar.tintColor = .label
         }
         
         view.addSubview(discoverTable)
         discoverTable.dataSource = self
         discoverTable.delegate = self
         apiManager.delegate = self
+        searchController.searchResultsUpdater = self
         
         fetchDiscoverMovies()
     }
@@ -92,5 +102,24 @@ extension SearchViewController: MovieApiManagerDelegate {
         DispatchQueue.main.async {
             self.discoverTable.reloadData()
         }
+    }
+    
+    func didSearchWithQuery(titles: [TitleData]) {
+        DispatchQueue.main.async {
+            guard let resultsController = self.searchController.searchResultsController as? SearchResultsViewController else {
+                return
+            }
+            resultsController.setSearchResults(titles: titles)
+        }
+    }
+}
+
+//MARK: - Search Results Updater
+
+extension SearchViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        guard let query = searchBar.text else { return }
+        apiManager.search(with: query)
     }
 }

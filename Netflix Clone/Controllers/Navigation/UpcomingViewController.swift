@@ -22,7 +22,7 @@ class UpcomingViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
-        title = "Upcoming"
+        navigationItem.title = "Upcoming"
         
         if let navigationController = navigationController {
             navigationController.navigationBar.prefersLargeTitles = true

@@ -14,6 +14,7 @@ protocol MovieApiManagerDelegate {
     func didFetchPopularMovies(titles: [TitleData])
     func didFetchTopRatedMovies(titles: [TitleData])
     func didFetchDiscoverMovies(titles: [TitleData])
+    func didSearchWithQuery(titles: [TitleData])
     
     func didFailWithError(error: Error)
 }
@@ -72,6 +73,19 @@ struct MovieApiManager {
         }
     }
     
+    func search(with query: String) {
+        if query.trimmingCharacters(in: .whitespaces).isEmpty ||
+           query.trimmingCharacters(in: .whitespaces).count < 3 {
+            return
+        }
+        
+        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
+        let urlString = "\(baseURL)/3/search/movie?api_key=\(apiKey)&query=\(query)"
+        fetchMovies(urlString: urlString) { results in
+            delegate?.didSearchWithQuery(titles: results)
+        }
+    }
+    
     private func fetchMovies(urlString: String, successHandler: @escaping ([TitleData]) -> Void) {
         guard let url = URL(string: urlString) else {
             delegate?.didFailWithError(error: ApiError.errorUrlString(urlString))
@@ -121,7 +135,10 @@ extension MovieApiManagerDelegate {
     func didFetchTopRatedMovies(titles: [TitleData]) {
     }
     
-    func didFetchDiscoverMovies(titles: [TitleData]){
+    func didFetchDiscoverMovies(titles: [TitleData]) {
+    }
+    
+    func didSearchWithQuery(titles: [TitleData]) {
     }
     
     func didFailWithError(error: Error) {
