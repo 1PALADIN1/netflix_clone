@@ -31,6 +31,7 @@
 		49CD2CD3281FE503000D9794 /* App.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49CD2CD2281FE503000D9794 /* App.plist */; };
 		49CD2CD5281FE554000D9794 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD2CD4281FE554000D9794 /* AppConfig.swift */; };
 		49CD2CD8281FE7B1000D9794 /* AppConfigData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD2CD7281FE7B1000D9794 /* AppConfigData.swift */; };
+		49E36CF528212B17000F3E69 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E36CF428212B17000F3E69 /* TitleTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		49CD2CD2281FE503000D9794 /* App.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = App.plist; sourceTree = "<group>"; };
 		49CD2CD4281FE554000D9794 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		49CD2CD7281FE7B1000D9794 /* AppConfigData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigData.swift; sourceTree = "<group>"; };
+		49E36CF428212B17000F3E69 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				4955251B281B07FB00703DEF /* CollectionViewTableViewCell.swift */,
 				496DD3E3281D23D600424990 /* HeroHeaderUIView.swift */,
 				491EE1AA282034D000CF04C1 /* TitleCollectionViewCell.swift */,
+				49E36CF428212B17000F3E69 /* TitleTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49E36CF528212B17000F3E69 /* TitleTableViewCell.swift in Sources */,
 				491EE1B5282046D700CF04C1 /* HomeSectionType.swift in Sources */,
 				4955251C281B07FB00703DEF /* CollectionViewTableViewCell.swift in Sources */,
 				49552519281B049500703DEF /* K.swift in Sources */,

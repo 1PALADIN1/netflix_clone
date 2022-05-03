@@ -10,6 +10,11 @@ struct MovieApiResponse: Decodable {
 }
 
 struct TitleData: Decodable {
+    
+    var titleName: String {
+        return original_name ?? original_title ?? "Unknown"
+    }
+    
     let id: Int
     let media_type: String?
     let original_name: String?

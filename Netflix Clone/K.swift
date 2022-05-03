@@ -9,7 +9,8 @@
 
 struct K {
     static let tableCellId = "TableCell"
-    static let titleCollectionViewCellId = "TitleViewCell"
+    static let titleCollectionViewCellId = "TitleCollectionViewCell"
+    static let titleTableCellId = "TitleTableCell"
 }
 
 //MARK: - Stubs
@@ -28,6 +29,8 @@ extension K {
     }
     
     struct SystemIcons {
+        static let playButtonComingSoon = "play.circle"
+        
         struct TabBar {
             static let home = "house"
             static let comingSoon = "play.circle"
