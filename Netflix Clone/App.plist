@@ -8,8 +8,10 @@
 	<string>https://image.tmdb.org/t/p/w500</string>
 	<key>apiKey</key>
 	<string></string>
-	<key>youtubeBaseUrl</key>
+	<key>youtubeApiBaseUrl</key>
 	<string>https://youtube.googleapis.com/youtube/v3</string>
+	<key>youtubeVideoBaseUrl</key>
+	<string>https://youtube.com/embed</string>
 	<key>youtubeApiKey</key>
 	<string></string>
 </dict>

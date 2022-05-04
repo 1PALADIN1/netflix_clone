@@ -124,6 +124,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
+        cell.delegate = self
         sectionTitles[indexPath.section].fetchData()
         return cell
     }
@@ -177,6 +178,18 @@ extension HomeViewController: MovieApiManagerDelegate {
             }
             
             cell.configure(with: titles)
+        }
+    }
+}
+
+//MARK: - CollectionViewTableViewCellDelegate
+
+extension HomeViewController: CollectionViewTableViewCellDelegate {
+    func didTapOnTitleCell(title: TitleData) {
+        DispatchQueue.main.async {
+            let titlePreviewVC = TitlePreviewViewController()
+            titlePreviewVC.previewTitle = title
+            self.navigationController?.pushViewController(titlePreviewVC, animated: true)
         }
     }
 }

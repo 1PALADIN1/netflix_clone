@@ -9,6 +9,7 @@ struct AppConfigData: Decodable {
     let baseUrl: String
     let imageBaseUrl: String
     let apiKey: String
-    let youtubeBaseUrl: String
+    let youtubeApiBaseUrl: String
+    let youtubeVideoBaseUrl: String
     let youtubeApiKey: String
 }

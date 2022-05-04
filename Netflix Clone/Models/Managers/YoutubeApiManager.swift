@@ -17,8 +17,8 @@ struct YoutubeApiManager {
     
     var delegate: YoutubeApiManagerDelegate?
     
-    private var youtubeBaseUrl: String {
-        return AppConfig.shared.youtubeBaseUrl
+    private var youtubeApiBaseUrl: String {
+        return AppConfig.shared.youtubeApiBaseUrl
     }
     
     private var youtubeApiKey: String {
@@ -27,7 +27,7 @@ struct YoutubeApiManager {
     
     func searchMovieOnYoutube(with query: String) {
         guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
-        let urlString = "\(youtubeBaseUrl)/search?q=\(query)&key=\(youtubeApiKey)"
+        let urlString = "\(youtubeApiBaseUrl)/search?q=\(query)&key=\(youtubeApiKey)"
         guard let url = URL(string: urlString) else {
             delegate?.didFailWithError(error: ApiError.errorUrlString(urlString))
             return

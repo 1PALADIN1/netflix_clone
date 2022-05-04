@@ -24,8 +24,12 @@ struct AppConfig {
         return appData?.imageBaseUrl ?? ""
     }
     
-    var youtubeBaseUrl: String {
-        return appData?.youtubeBaseUrl ?? ""
+    var youtubeApiBaseUrl: String {
+        return appData?.youtubeApiBaseUrl ?? ""
+    }
+    
+    var youtubeVideoBaseUrl: String {
+        return appData?.youtubeVideoBaseUrl ?? ""
     }
     
     var youtubeApiKey: String {
