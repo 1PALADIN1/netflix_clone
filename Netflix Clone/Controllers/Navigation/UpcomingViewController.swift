@@ -27,6 +27,7 @@ class UpcomingViewController: UIViewController {
         if let navigationController = navigationController {
             navigationController.navigationBar.prefersLargeTitles = true
             navigationController.navigationItem.largeTitleDisplayMode = .always
+            navigationController.navigationBar.tintColor = .label
         }
         
         view.addSubview(upcomingTable)
@@ -81,6 +82,14 @@ extension UpcomingViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let titlePreviewVC = TitlePreviewViewController()
+        titlePreviewVC.previewTitle = titles[indexPath.row]
+        navigationController?.pushViewController(titlePreviewVC, animated: true)
     }
 }
 

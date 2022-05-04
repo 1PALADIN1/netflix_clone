@@ -9,6 +9,8 @@ import UIKit
 
 class SearchResultsViewController: UIViewController {
     
+    var delegate: TitleTapDelegate?
+    
     private var titles: [TitleData] = []
     
     private let searchResultsCollectionView: UICollectionView = {
@@ -55,5 +57,10 @@ extension SearchResultsViewController: UICollectionViewDelegate, UICollectionVie
         
         cell.configure(with: titles[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        delegate?.didTapOnTitle(title: titles[indexPath.row])
     }
 }

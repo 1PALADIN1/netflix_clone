@@ -9,7 +9,9 @@ import UIKit
 
 class HeroHeaderUIView: UIView {
     
-    private var isConfigured: Bool = false
+    var delegate: TitleTapDelegate?
+    
+    private var headerTitle: TitleData?
     
     private var imageBaseUrl: String {
         return AppConfig.shared.imageBaseUrl
@@ -50,6 +52,8 @@ class HeroHeaderUIView: UIView {
         addSubview(playButton)
         addSubview(downloadButton)
         applyConstraints()
+        
+        playButton.addTarget(self, action: #selector(self.playButtonClicked), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -88,13 +92,19 @@ class HeroHeaderUIView: UIView {
         NSLayoutConstraint.activate(downloadButtonConstraints)
     }
     
+    @objc private func playButtonClicked(sender: UIButton!) {
+        if let headerTitle = headerTitle {
+            delegate?.didTapOnTitle(title: headerTitle)
+        }
+    }
+    
     func configure(with title: TitleData) {
-        if isConfigured {
+        if headerTitle != nil {
             return
         }
         
+        headerTitle = title
         guard let url = title.getPosterUrl(with: imageBaseUrl) else { return }
         heroImageView.sd_setImage(with: url, completed: nil)
-        isConfigured = true
     }
 }

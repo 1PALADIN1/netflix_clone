@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
                                                     width: view.bounds.width,
                                                     height: 450))
         homeFeedTable.tableHeaderView = headerView
+        headerView?.delegate = self
         configureNavbar()
         
         sectionTitles = [
@@ -186,10 +187,10 @@ extension HomeViewController: MovieApiManagerDelegate {
     }
 }
 
-//MARK: - CollectionViewTableViewCellDelegate
+//MARK: - TitleTapDelegate
 
-extension HomeViewController: CollectionViewTableViewCellDelegate {
-    func didTapOnTitleCell(title: TitleData) {
+extension HomeViewController: TitleTapDelegate {
+    func didTapOnTitle(title: TitleData) {
         DispatchQueue.main.async {
             let titlePreviewVC = TitlePreviewViewController()
             titlePreviewVC.previewTitle = title

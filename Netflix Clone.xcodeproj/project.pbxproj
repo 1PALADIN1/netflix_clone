@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490AD73B2822B9560088497A /* TitleTapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490AD73A2822B9560088497A /* TitleTapDelegate.swift */; };
 		491EE1AB282034D000CF04C1 /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491EE1AA282034D000CF04C1 /* TitleCollectionViewCell.swift */; };
 		491EE1AE2820361D00CF04C1 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 491EE1AD2820361D00CF04C1 /* SDWebImage */; };
 		491EE1B02820361D00CF04C1 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 491EE1AF2820361D00CF04C1 /* SDWebImageMapKit */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		490AD73A2822B9560088497A /* TitleTapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTapDelegate.swift; sourceTree = "<group>"; };
 		491EE1AA282034D000CF04C1 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		491EE1B4282046D700CF04C1 /* HomeSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionType.swift; sourceTree = "<group>"; };
 		49507E25281E967600FDFE51 /* TitleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleData.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				496DD3E3281D23D600424990 /* HeroHeaderUIView.swift */,
 				491EE1AA282034D000CF04C1 /* TitleCollectionViewCell.swift */,
 				49E36CF428212B17000F3E69 /* TitleTableViewCell.swift */,
+				490AD73A2822B9560088497A /* TitleTapDelegate.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				496DD3E4281D23D600424990 /* HeroHeaderUIView.swift in Sources */,
 				4990AD5A2819DDA100A8A1FD /* TabBarItem.swift in Sources */,
 				4990AD512819D59100A8A1FD /* HomeViewController.swift in Sources */,
+				490AD73B2822B9560088497A /* TitleTapDelegate.swift in Sources */,
 				4966AC9E2822721A004BB9D4 /* TitlePreviewViewController.swift in Sources */,
 				49507E28281E971D00FDFE51 /* MovieApiManager.swift in Sources */,
 				4972773A282172A400827B98 /* SearchResultsViewController.swift in Sources */,

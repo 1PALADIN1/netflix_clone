@@ -7,13 +7,9 @@
 
 import UIKit
 
-protocol CollectionViewTableViewCellDelegate {
-    func didTapOnTitleCell(title: TitleData)
-}
-
 class CollectionViewTableViewCell: UITableViewCell {
     
-    var delegate: CollectionViewTableViewCellDelegate?
+    var delegate: TitleTapDelegate?
     
     private var titles: [TitleData] = []
     
@@ -74,6 +70,6 @@ extension CollectionViewTableViewCell: UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        delegate?.didTapOnTitleCell(title: titles[indexPath.row])
+        delegate?.didTapOnTitle(title: titles[indexPath.row])
     }
 }

@@ -44,6 +44,10 @@ class SearchViewController: UIViewController {
         apiManager.delegate = self
         searchController.searchResultsUpdater = self
         
+        if let resultsController = searchController.searchResultsController as? SearchResultsViewController {
+            resultsController.delegate = self
+        }
+        
         fetchDiscoverMovies()
     }
     
@@ -92,6 +96,14 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let titlePreviewVC = TitlePreviewViewController()
+        titlePreviewVC.previewTitle = titles[indexPath.row]
+        navigationController?.pushViewController(titlePreviewVC, animated: true)
+    }
 }
 
 //MARK: - MovieApiManagerDelegate
@@ -121,5 +133,15 @@ extension SearchViewController: UISearchResultsUpdating {
         let searchBar = searchController.searchBar
         guard let query = searchBar.text else { return }
         apiManager.searchMovie(with: query)
+    }
+}
+
+//MARK: - TitleTapDelegate
+
+extension SearchViewController: TitleTapDelegate {
+    func didTapOnTitle(title: TitleData) {
+        let titlePreviewVC = TitlePreviewViewController()
+        titlePreviewVC.previewTitle = title
+        navigationController?.pushViewController(titlePreviewVC, animated: true)
     }
 }
