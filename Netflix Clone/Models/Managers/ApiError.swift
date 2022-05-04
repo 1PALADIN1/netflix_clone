@@ -10,6 +10,7 @@ import Foundation
 enum ApiError: Error {
     case errorUrlString(String)
     case emptyResponseData
+    case notFoundYoutubeVideo
 }
 
 extension ApiError: LocalizedError {
@@ -19,6 +20,8 @@ extension ApiError: LocalizedError {
             return NSLocalizedString("Error creating url with string \(urlString)", comment: "")
         case .emptyResponseData:
             return NSLocalizedString("Response data is empty!", comment: "")
+        case .notFoundYoutubeVideo:
+            return NSLocalizedString("Youtube video is not found!", comment: "")
         }
     }
 }

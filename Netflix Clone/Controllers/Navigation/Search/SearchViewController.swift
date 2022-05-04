@@ -120,6 +120,6 @@ extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         guard let query = searchBar.text else { return }
-        apiManager.search(with: query)
+        apiManager.searchMovie(with: query)
     }
 }

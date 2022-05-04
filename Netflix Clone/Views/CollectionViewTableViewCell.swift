@@ -10,6 +10,7 @@ import UIKit
 class CollectionViewTableViewCell: UITableViewCell {
     
     private var titles: [TitleData] = []
+    private var youtubeApiManager = YoutubeApiManager()
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -30,6 +31,7 @@ class CollectionViewTableViewCell: UITableViewCell {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        youtubeApiManager.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -64,5 +66,17 @@ extension CollectionViewTableViewCell: UICollectionViewDataSource, UICollectionV
         
         cell.configure(with: titles[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let query = "\(titles[indexPath.row].titleName) trailer"
+        youtubeApiManager.searchMovieOnYoutube(with: query)
+    }
+}
+
+extension CollectionViewTableViewCell: YoutubeApiManagerDelegate {
+    func didSearchOnYoutube(video: YoutubeData) {
+        print(video)
     }
 }

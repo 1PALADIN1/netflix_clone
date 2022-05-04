@@ -8,5 +8,9 @@
 	<string>https://image.tmdb.org/t/p/w500</string>
 	<key>apiKey</key>
 	<string></string>
+	<key>youtubeBaseUrl</key>
+	<string>https://youtube.googleapis.com/youtube/v3</string>
+	<key>youtubeApiKey</key>
+	<string></string>
 </dict>
 </plist>

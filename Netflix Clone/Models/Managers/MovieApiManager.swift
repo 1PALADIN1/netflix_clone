@@ -73,7 +73,7 @@ struct MovieApiManager {
         }
     }
     
-    func search(with query: String) {
+    func searchMovie(with query: String) {
         if query.trimmingCharacters(in: .whitespaces).isEmpty ||
            query.trimmingCharacters(in: .whitespaces).count < 3 {
             return
