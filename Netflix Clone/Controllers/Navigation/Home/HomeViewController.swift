@@ -11,6 +11,7 @@ class HomeViewController: UIViewController {
     
     private var sectionTitles: [HomeSection] = []
     private var apiManager = MovieApiManager()
+    private var headerView: HeroHeaderUIView?
 
     private let homeFeedTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -27,10 +28,9 @@ class HomeViewController: UIViewController {
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
         
-        let headerView = HeroHeaderUIView(frame: CGRect(x: 0,
-                                                        y: 0,
-                                                        width: view.bounds.width,
-                                                        height: 450))
+        headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0,
+                                                    width: view.bounds.width,
+                                                    height: 450))
         homeFeedTable.tableHeaderView = headerView
         configureNavbar()
         
@@ -152,6 +152,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 extension HomeViewController: MovieApiManagerDelegate {
     func didFetchTrendingMovies(titles: [TitleData]) {
         refreshSection(HomeSectionType.TrendingMovies, with: titles)
+        
+        if let randomTitle = titles.randomElement() {
+            headerView?.configure(with: randomTitle)
+        }
     }
     
     func didFetchTrendingTv(titles: [TitleData]) {

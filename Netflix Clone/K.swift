@@ -13,14 +13,6 @@ struct K {
     static let titleTableCellId = "TitleTableCell"
 }
 
-//MARK: - Stubs
-
-extension K {
-    struct Stubs {
-        static let mainPosterImageName = "heroImage"
-    }
-}
-
 //MARK: - Icons
 
 extension K {

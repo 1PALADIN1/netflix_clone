@@ -9,11 +9,16 @@ import UIKit
 
 class HeroHeaderUIView: UIView {
     
+    private var isConfigured: Bool = false
+    
+    private var imageBaseUrl: String {
+        return AppConfig.shared.imageBaseUrl
+    }
+    
     private let heroImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: K.Stubs.mainPosterImageName)
         return imageView
     }()
     
@@ -81,5 +86,15 @@ class HeroHeaderUIView: UIView {
         
         NSLayoutConstraint.activate(playButtonConstraints)
         NSLayoutConstraint.activate(downloadButtonConstraints)
+    }
+    
+    func configure(with title: TitleData) {
+        if isConfigured {
+            return
+        }
+        
+        guard let url = title.getPosterUrl(with: imageBaseUrl) else { return }
+        heroImageView.sd_setImage(with: url, completed: nil)
+        isConfigured = true
     }
 }
