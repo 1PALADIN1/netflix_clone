@@ -9,10 +9,9 @@ import UIKit
 
 class CollectionViewTableViewCell: UITableViewCell {
     
-    var delegate: TitleTapDelegate?
+    var delegate: TitleActionDelegate?
     
     private var titles: [TitleData] = []
-    private var dataManger = DataManager()
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -78,13 +77,12 @@ extension CollectionViewTableViewCell: UICollectionViewDataSource, UICollectionV
         let config = UIContextMenuConfiguration(
             identifier: nil,
             previewProvider: nil) { [weak self] _ in
-                //TODO: Icon
                 let downloadAction = UIAction(title: "Download", subtitle: nil,
-                                              image: nil, identifier: nil,
+                                              image: UIImage(systemName: K.SystemIcons.downloadTitleIcon), identifier: nil,
                                               discoverabilityTitle: nil, state: .off) { _ in
                     
                     if let downloadTitle = self?.titles[indexPath.row] {
-                        self?.dataManger.downloadTitle(title: downloadTitle)
+                        self?.delegate?.didTapDownloadTitle(title: downloadTitle)
                     }
                 }
                 

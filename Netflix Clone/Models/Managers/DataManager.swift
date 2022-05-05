@@ -28,9 +28,27 @@ struct DataManager {
         context = appDelegate.persistantContainer.viewContext
     }
     
-    func downloadTitle(title: TitleData) {
+    func hasEntity(with id: Int) -> Bool {
+        let request = TitleEntity.fetchRequest()
+        let idPredicate = NSPredicate(
+            format: "id = %d", Int64(id)
+        )
         
-        //TODO: Проверять, что тайтл ещё не скачан по айди
+        request.predicate = idPredicate
+        
+        do {
+            let titles = try context.fetch(request)
+            return titles.count > 0
+        } catch {
+            delegate?.didFailWithError(error: error)
+            return false
+        }
+    }
+    
+    func downloadTitle(title: TitleData) {
+        if (hasEntity(with: title.id)) {
+            return
+        }
         
         let entity = TitleEntity(context: context)
         title.copyTo(entity: entity)

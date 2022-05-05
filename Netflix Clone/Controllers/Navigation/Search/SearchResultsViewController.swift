@@ -9,7 +9,7 @@ import UIKit
 
 class SearchResultsViewController: UIViewController {
     
-    var delegate: TitleTapDelegate?
+    var delegate: TitleActionDelegate?
     
     private var titles: [TitleData] = []
     

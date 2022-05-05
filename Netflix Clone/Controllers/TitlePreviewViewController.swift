@@ -13,6 +13,7 @@ class TitlePreviewViewController: UIViewController {
     var previewTitle: TitleData?
     
     private var youtubeApiManager = YoutubeApiManager()
+    private let dataManager = DataManager()
     
     private var youtubeVideoBaseUrl: String {
         return AppConfig.shared.youtubeVideoBaseUrl
@@ -64,6 +65,8 @@ class TitlePreviewViewController: UIViewController {
         
         youtubeApiManager.delegate = self
         configureTitle()
+        
+        downloadButton.addTarget(self, action: #selector(self.downloadButtonClicked), for: .touchUpInside)
     }
     
     private func applyConstraints() {
@@ -107,6 +110,12 @@ class TitlePreviewViewController: UIViewController {
         
         let query = "\(previewTitle.titleName) trailer"
         youtubeApiManager.searchMovieOnYoutube(with: query)
+    }
+    
+    @objc private func downloadButtonClicked(sender: UIButton!) {
+        if let previewTitle = previewTitle {
+            dataManager.downloadTitle(title: previewTitle)
+        }
     }
 }
 

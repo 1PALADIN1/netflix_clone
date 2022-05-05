@@ -138,7 +138,7 @@ extension SearchViewController: UISearchResultsUpdating {
 
 //MARK: - TitleTapDelegate
 
-extension SearchViewController: TitleTapDelegate {
+extension SearchViewController: TitleActionDelegate {
     func didTapOnTitle(title: TitleData) {
         let titlePreviewVC = TitlePreviewViewController()
         titlePreviewVC.previewTitle = title

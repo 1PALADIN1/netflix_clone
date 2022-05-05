@@ -9,7 +9,7 @@ import UIKit
 
 class HeroHeaderUIView: UIView {
     
-    var delegate: TitleTapDelegate?
+    var delegate: TitleActionDelegate?
     
     private var headerTitle: TitleData?
     
@@ -54,6 +54,7 @@ class HeroHeaderUIView: UIView {
         applyConstraints()
         
         playButton.addTarget(self, action: #selector(self.playButtonClicked), for: .touchUpInside)
+        downloadButton.addTarget(self, action: #selector(self.downloadButtonClicked), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -95,6 +96,12 @@ class HeroHeaderUIView: UIView {
     @objc private func playButtonClicked(sender: UIButton!) {
         if let headerTitle = headerTitle {
             delegate?.didTapOnTitle(title: headerTitle)
+        }
+    }
+    
+    @objc private func downloadButtonClicked(sender: UIButton!) {
+        if let headerTitle = headerTitle {
+            delegate?.didTapDownloadTitle(title: headerTitle)
         }
     }
     

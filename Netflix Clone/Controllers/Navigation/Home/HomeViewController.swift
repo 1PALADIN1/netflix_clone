@@ -12,6 +12,8 @@ class HomeViewController: UIViewController {
     private var sectionTitles: [HomeSection] = []
     private var apiManager = MovieApiManager()
     private var headerView: HeroHeaderUIView?
+    
+    private let dataManger = DataManager()
 
     private let homeFeedTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -189,12 +191,16 @@ extension HomeViewController: MovieApiManagerDelegate {
 
 //MARK: - TitleTapDelegate
 
-extension HomeViewController: TitleTapDelegate {
+extension HomeViewController: TitleActionDelegate {
     func didTapOnTitle(title: TitleData) {
         DispatchQueue.main.async { [weak self] in
             let titlePreviewVC = TitlePreviewViewController()
             titlePreviewVC.previewTitle = title
             self?.navigationController?.pushViewController(titlePreviewVC, animated: true)
         }
+    }
+    
+    func didTapDownloadTitle(title: TitleData) {
+        dataManger.downloadTitle(title: title)
     }
 }

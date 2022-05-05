@@ -22,6 +22,7 @@ extension K {
     
     struct SystemIcons {
         static let playButtonComingSoon = "play.circle"
+        static let downloadTitleIcon = "arrow.down.circle"
         
         struct TabBar {
             static let home = "house"
