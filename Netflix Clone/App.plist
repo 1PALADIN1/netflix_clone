@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>baseUrl</key>
+	<string>https://api.themoviedb.org</string>
+	<key>imageBaseUrl</key>
+	<string>https://image.tmdb.org/t/p/w500</string>
+	<key>apiKey</key>
+	<string></string>
+	<key>youtubeApiBaseUrl</key>
+	<string>https://youtube.googleapis.com/youtube/v3</string>
+	<key>youtubeVideoBaseUrl</key>
+	<string>https://youtube.com/embed</string>
+	<key>youtubeApiKey</key>
+	<string></string>
+</dict>
+</plist>
