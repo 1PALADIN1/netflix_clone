@@ -9,7 +9,6 @@ import UIKit
 import CoreData
 
 protocol DataManagerDelegate {
-    func didDownloadTitle()
     func didFetchAllTitles(titles: [TitleEntity])
     
     func didFailWithError(error: Error)
@@ -30,12 +29,15 @@ struct DataManager {
     }
     
     func downloadTitle(title: TitleData) {
+        
+        //TODO: Проверять, что тайтл ещё не скачан по айди
+        
         let entity = TitleEntity(context: context)
         title.copyTo(entity: entity)
         
         do {
             try context.save()
-            delegate?.didDownloadTitle()
+            NotificationCenter.default.post(name: NSNotification.Name(K.Notifications.titleDownloaded), object: nil)
         } catch {
             delegate?.didFailWithError(error: error)
         }
@@ -65,9 +67,6 @@ struct DataManager {
 //MARK: - Default DataManagerDelegate implementation
 
 extension DataManagerDelegate {
-    func didDownloadTitle() {
-    }
-    
     func didFetchAllTitles(titles: [TitleEntity]) {
     }
     

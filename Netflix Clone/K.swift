@@ -36,3 +36,11 @@ extension K {
         }
     }
 }
+
+//MARK: - Notifications
+
+extension K {
+    struct Notifications {
+        static let titleDownloaded = "titleDownloaded"
+    }
+}

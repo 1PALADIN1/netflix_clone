@@ -37,6 +37,10 @@ class DownloadsViewController: UIViewController {
         view.addSubview(downloadsTable)
         
         refreshTable()
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(K.Notifications.titleDownloaded), object: nil, queue: nil) { [weak self] _ in
+            self?.refreshTable()
+        }
     }
     
     override func viewDidLayoutSubviews() {
