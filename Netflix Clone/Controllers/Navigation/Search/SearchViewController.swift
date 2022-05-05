@@ -111,14 +111,14 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 extension SearchViewController: MovieApiManagerDelegate {
     func didFetchDiscoverMovies(titles: [TitleData]) {
         self.titles = titles
-        DispatchQueue.main.async {
-            self.discoverTable.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.discoverTable.reloadData()
         }
     }
     
     func didSearchWithQuery(titles: [TitleData]) {
-        DispatchQueue.main.async {
-            guard let resultsController = self.searchController.searchResultsController as? SearchResultsViewController else {
+        DispatchQueue.main.async { [weak self] in
+            guard let resultsController = self?.searchController.searchResultsController as? SearchResultsViewController else {
                 return
             }
             resultsController.setSearchResults(titles: titles)

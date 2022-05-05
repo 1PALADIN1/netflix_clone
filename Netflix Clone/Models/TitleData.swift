@@ -43,3 +43,26 @@ struct TitleData: Decodable {
     }
 }
 
+extension TitleData {
+    func copyTo(entity: TitleEntity) {
+        entity.id = Int64(id)
+        entity.media_type = media_type
+        entity.original_name = original_name
+        entity.original_title = original_title
+        entity.poster_path = poster_path
+        entity.overview = overview
+        entity.vote_count = Int64(vote_count)
+        entity.release_date = release_date
+        entity.vote_average = vote_average
+    }
+    
+    static func createFromEntity(entity: TitleEntity) -> TitleData {
+        let title = TitleData(id: Int(entity.id), media_type: entity.media_type,
+                              original_name: entity.original_name, original_title: entity.original_title,
+                              poster_path: entity.poster_path, overview: entity.overview,
+                              vote_count: Int(entity.vote_count), release_date: entity.release_date,
+                              vote_average: entity.vote_average)
+        
+        return title
+    }
+}

@@ -98,8 +98,8 @@ extension UpcomingViewController: UITableViewDataSource, UITableViewDelegate {
 extension UpcomingViewController: MovieApiManagerDelegate {
     func didFetchUpcomingMovies(titles: [TitleData]) {
         self.titles = titles
-        DispatchQueue.main.async {
-            self.upcomingTable.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.upcomingTable.reloadData()
         }
     }
 }

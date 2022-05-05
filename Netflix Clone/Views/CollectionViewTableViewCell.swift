@@ -12,6 +12,7 @@ class CollectionViewTableViewCell: UITableViewCell {
     var delegate: TitleTapDelegate?
     
     private var titles: [TitleData] = []
+    private var dataManger = DataManager()
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -71,5 +72,25 @@ extension CollectionViewTableViewCell: UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         delegate?.didTapOnTitle(title: titles[indexPath.row])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let config = UIContextMenuConfiguration(
+            identifier: nil,
+            previewProvider: nil) { [weak self] _ in
+                //TODO: Icon
+                let downloadAction = UIAction(title: "Download", subtitle: nil,
+                                              image: nil, identifier: nil,
+                                              discoverabilityTitle: nil, state: .off) { _ in
+                    
+                    if let downloadTitle = self?.titles[indexPath.row] {
+                        self?.dataManger.downloadTitle(title: downloadTitle)
+                    }
+                }
+                
+                return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [downloadAction])
+            }
+        
+        return config
     }
 }

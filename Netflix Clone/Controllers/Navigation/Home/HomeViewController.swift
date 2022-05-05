@@ -176,9 +176,9 @@ extension HomeViewController: MovieApiManagerDelegate {
     }
     
     private func refreshSection(_ section: HomeSectionType, with titles: [TitleData]) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             let indexPath = IndexPath(row: 0, section: section.rawValue)
-            guard let cell = self.homeFeedTable.cellForRow(at: indexPath) as? CollectionViewTableViewCell else {
+            guard let cell = self?.homeFeedTable.cellForRow(at: indexPath) as? CollectionViewTableViewCell else {
                 return
             }
             
@@ -191,10 +191,10 @@ extension HomeViewController: MovieApiManagerDelegate {
 
 extension HomeViewController: TitleTapDelegate {
     func didTapOnTitle(title: TitleData) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             let titlePreviewVC = TitlePreviewViewController()
             titlePreviewVC.previewTitle = title
-            self.navigationController?.pushViewController(titlePreviewVC, animated: true)
+            self?.navigationController?.pushViewController(titlePreviewVC, animated: true)
         }
     }
 }

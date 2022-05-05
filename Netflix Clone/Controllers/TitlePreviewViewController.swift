@@ -117,8 +117,8 @@ extension TitlePreviewViewController: YoutubeApiManagerDelegate {
         let urlString = "\(youtubeVideoBaseUrl)/\(video.id.videoId)"
         guard let url = URL(string: urlString) else { return }
         
-        DispatchQueue.main.async {
-            self.webView.load(URLRequest(url: url))
+        DispatchQueue.main.async { [weak self] in
+            self?.webView.load(URLRequest(url: url))
         }
     }
 }
