@@ -14,19 +14,19 @@
 Несложный клон приложения Netflix. На данный момент в РФ работает только через VPN (необходим доступ к API [TMDB](https://www.themoviedb.org/)).
 Приложение отображает трендовые фильмы и сериалы на главном окне:
 
-![Home tab](show_home.gif)
+![Home tab](Docs/show_home.gif)
 
 Показывает предстоящие релизы:
 
-![Coming soon tab](show_coming_soon.gif)
+![Coming soon tab](Docs/show_coming_soon.gif)
 
 Можно посмотреть трейлер:
 
-![Play trailer](play_trailer.gif)
+![Play trailer](Docs/play_trailer.gif)
 
 Можно искать по фильмотеке нужный фильм:
 
-![Search title](show_search_title.gif)
+![Search title](Docs/show_search_title.gif)
 
 И добавить фильм или сериал в избранное (на вкладке Downloads).
 Вёрстка реализована кодом. Стартовое окно *MainTabBarViewController*.
